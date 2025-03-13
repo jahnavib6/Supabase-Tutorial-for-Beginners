@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+
+<html lang = "en">
+
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Questionaire</title>
+</head>
+
+
+<body>
+   <form action="index.php" method="POST"> // ask jahnavi if she has index.php (where are we storing backend stuff)
+  
+       <label for="trash-size">What is the capacity of your trashcan (in gallons)?</label>
+       <input type="number" id="trash-size" min="0" max="10000" value="1"><br>
+
+
+       <label for="trash-quantity">How many bags of trash do you generate daily?</label>
+       <input type="number" id="trash-quantity" min="0" max="10000" value="1"><br>
+
+
+       <label for="shower-time">How long does your average shower last?</label>
+       <input type="number" id="shower-time" min="0" max="10000" value="1"><br>
+
+
+       <label for="shower-quantity">How many showers do you take per day?</label>
+       <input type="number" id="shower-quantity" min="0" max="10000" value="1"><br>
+
+
+       <label for="laundry-quantity">How often do you wash your clothes per week?</label>
+       <input type="number" id="laundry-quantity" min="0" max="10000" value="1"><br>
+
+
+       <label for="washer-quantity">How many washing machines do you take up per wash?</label>
+       <input type="number" id="washer-quantity" min="0" max="10000" value="1"><br>
+
+
+       <label for="light-quantity">How many hours do you keep the lights on per day?</label>
+       <input type="number" id="light-quantity" min="0" max="10000" value="1"><br>
+
+
+       <label for="electronic-quantity">How many hours do you keep devices plugged in per day?</label>
+       <input type="number" id="electronic-quantity" min="0" max="10000" value="1"><br>
+
+
+       <label for="heater-quantity">How many hours do you keep your heater/air conditioning per day?</label>
+       <input type="number" id="heater-quantity" min="0" max="10000" value="1"><br>
+
+
+       <label for="appliances-quantity">How many hours do you keep your appliances plugged in per day?</label>
+       <input type="number" id="appliances-quantity" min="0" max="10000" value="1"><br>
+
+
+       <label for="transport">How do you move around campus?</label>
+       <select id="transport">
+           <option value="walk-bike">Walking or Biking</option>
+           <option value="scooter-electric">Scooter or Electric Bike</option>
+           <option value="train-bus">Train or Bus</option>
+           <option value="car">Car</option>
+       </select><br>
+
+
+       <label for="recycle">Do you recycle?</label>
+       <select id="recycle">
+           <option value="yes">Yes</option>
+           <option value="no">No</option>
+       </select><br>
+
+
+       <label for="separate-recycle">Do you separate your trash and recycling?</label>
+       <select id="separate-recycle">
+           <option value="yes">Yes</option>
+           <option value="no">No</option>
+       </select><br>
+
+
+       <label for="recycle-quanity">How many bags of recycled items do you have daily?</label>
+       <input type="number" id="recycle-quanity" min="0" max="10000" value="1"><br>
+
+
+       <label for="mutli-use">How often do you use multiple use products?</label>
+       <select id="mutli-use">
+           <option value="rarely">Rarely</option>
+           <option value="sometimes">Sometimes</option>
+           <option value="often">Often</option>
+       </select><br>
+
+
+       <label for="single-use">How often do you use single use products?</label>
+       <select id="single-use">
+           <option value="rarely">Rarely</option>
+           <option value="sometimes">Sometimes</option>
+           <option value="often">Often</option>
+       </select><br>
+
+
+       <label for="donation">Do you donate items?</label>
+       <select id="donation">
+           <option value="yes">Yes</option>
+           <option value="no">No</option>
+       </select><br>
+
+
+       <label for="second-hand">Do you buy second hand items?</label>
+       <select id="second-hand">
+           <option value="yes">Yes</option>
+           <option value="no">No</option>
+       </select><br>
+   </form>
+
+
+</body>
+</html>
