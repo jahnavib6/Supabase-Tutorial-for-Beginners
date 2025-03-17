@@ -6,7 +6,7 @@ const Update = () => {
   const { id } = useParams()
   const navigate = useNavigate()
 
-  const [title, setTitle] = useState('')
+  const [dorm, setDorm] = useState('')
   const [method, setMethod] = useState('')
   const [rating, setRating] = useState('')
   const [formError, setFormError] = useState(null)
@@ -20,8 +20,8 @@ const Update = () => {
     }
 
     const { data, error } = await supabase
-      .from('recipes')
-      .update({ title, method, rating })
+      .from('environment_data')
+      .update({ dorm, rating, method })
       .eq('id', id)
 
     if (error) {
@@ -34,9 +34,9 @@ const Update = () => {
   }
 
   useEffect(() => {
-    const fetchSmoothie = async () => {
+    const fetchEdata = async () => {
       const { data, error } = await supabase
-        .from('recipes')
+        .from('environmental_data')
         .select()
         .eq('id', id)
         .single()
@@ -45,23 +45,23 @@ const Update = () => {
         navigate('/', { replace: true })
       }
       if (data) {
-        setTitle(data.title)
+        setDorm(data.dorm)
         setMethod(data.method)
         setRating(data.rating)
       }
     }
 
-    fetchSmoothie()
+    fetchEdata()
   }, [id, navigate])
 
   return (
     <div className="page create">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title:</label>
+        <label htmlFor="dorm">Dorm:</label>
         <input 
           type="text" 
-          id="title"
-          value={title}
+          id="dorm"
+          value={dorm}
           onChange={(e) => setTitle(e.target.value)}
         />
 
@@ -80,7 +80,7 @@ const Update = () => {
           onChange={(e) => setRating(e.target.value)}
         />
 
-        <button>Update Smoothie Recipe</button>
+        <button>Update Environmental Task</button>
 
         {formError && <p className="error">{formError}</p>}
       </form>

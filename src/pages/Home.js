@@ -2,23 +2,23 @@ import supabase from '../config/supabaseClient'
 import { useEffect, useState } from 'react'
 
 // components
-import SmoothieCard from '../components/SmoothieCard'
+import UserCard from '../components/UserCard'
 
 const Home = () => {
   const [fetchError, setFetchError] = useState(null)
-  const [smoothies, setSmoothies] = useState(null)
+  const [edata, setEdata] = useState(null)
   const [orderBy, setOrderBy] = useState('created_at')
 
   const handleDelete = (id) => {
-    setSmoothies(prevSmoothies => {
-      return prevSmoothies.filter(sm => sm.id !== id)
+    setEdata(prevEdata => {
+      return prevEdata.filter(sm => sm.id !== id)
     })
   }
 
   useEffect(() => {
-    const fetchSmoothies = async () => {
+    const fetchEdata = async () => {
       const { data, error } = await supabase
-        .from('recipes')
+        .from('environmental_data')
         .select()
         .order(orderBy, {ascending: false})
       
@@ -27,29 +27,30 @@ const Home = () => {
         setSmoothies(null)
       }
       if (data) {
-        setSmoothies(data)
+        setEdata(data)
         setFetchError(null)
       }
     }
 
-    fetchSmoothies()
+    fetchEdata()
 
   }, [orderBy])
 
   return (
     <div className="page home">
       {fetchError && (<p>{fetchError}</p>)}
-      {smoothies && (
-        <div className="smoothies">
+      {edata && (
+        <div className="edata">
           <div className="order-by">
             <p>Order by:</p>
             <button onClick={() => setOrderBy('created_at')}>Time Created</button>
-            <button onClick={() => setOrderBy('title')}>Title</button>
+            <button onClick={() => setOrderBy('method')}>Method</button>
             <button onClick={() => setOrderBy('rating')}>Rating</button>
+            <button onClick={() => setOrderBy('dorm')}>Dorm</button>
           </div>
-          <div className="smoothie-grid">
-            {smoothies.map(smoothie => (
-              <SmoothieCard key={smoothie.id} smoothie={smoothie} onDelete={handleDelete} />
+          <div className="edata-grid">
+            {edata.map(edata => (
+              <UserCard key={edata.id} edata={edata} onDelete={handleDelete} />
             ))}
           </div>
         </div>

@@ -1,30 +1,30 @@
 import supabase from "../config/supabaseClient"
 import { Link } from 'react-router-dom'
 
-const SmoothieCard = ({ smoothie, onDelete }) => {
+const UserCard = ({ edata, onDelete }) => {
 
   const handleDelete = async () => {
     const { data, error } = await supabase
-      .from('recipes')
+      .from('environmental_data')
       .delete()
-      .eq('id', smoothie.id)
+      .eq('id', edata.id)
     
     if (error) {
       console.log(error)
     }
     if (data) {
       console.log(data)
-      onDelete(smoothie.id)
+      onDelete(edata.id)
     }
   }
 
   return (
-    <div className="smoothie-card">
-      <h3>{smoothie.title}</h3>
-      <p>{smoothie.method}</p>
-      <div className="rating">{smoothie.rating}</div>
+    <div className="user-card">
+      <h3>{edata.title}</h3>
+      <p>{edata.method}</p>
+      <div className="rating">{edata.rating}</div>
       <div className="buttons">
-        <Link to={"/" + smoothie.id}>
+        <Link to={"/" + edata.id}>
           <i className="material-icons">edit</i>
         </Link>
         <i className="material-icons" onClick={handleDelete}>delete</i>
@@ -33,4 +33,4 @@ const SmoothieCard = ({ smoothie, onDelete }) => {
   )
 }
 
-export default SmoothieCard
+export default UserCard

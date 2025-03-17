@@ -19,8 +19,8 @@ const Create = () => {
     }
 
     const { data, error } = await supabase
-      .from('recipes')
-      .insert([{ title, method, rating }])
+      .from('environmental_data')
+      .insert([{ dorm, rating, method }])
 
     if (error) {
       console.log(error)
@@ -36,11 +36,11 @@ const Create = () => {
   return (
     <div className="page create">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title:</label>
+        <label htmlFor="dorm">Dorm:</label>
         <input 
           type="text" 
-          id="title"
-          value={title}
+          id="dorm"
+          value={dorm}
           onChange={(e) => setTitle(e.target.value)}
         />
 
@@ -59,7 +59,7 @@ const Create = () => {
           onChange={(e) => setRating(e.target.value)}
         />
 
-        <button>Create Smoothie Recipe</button>
+        <button>Create Environmental Task</button>
 
         {formError && <p className="error">{formError}</p>}
       </form>
