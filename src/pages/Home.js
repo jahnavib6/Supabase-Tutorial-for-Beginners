@@ -20,11 +20,11 @@ const Home = () => {
       const { data, error } = await supabase
         .from('environmental_data')
         .select()
-        .order(orderBy, { ascending: false }) // Ensure order field is correct
+        .order(orderBy, { ascending: false }) 
 
       if (error) {
         setFetchError('Could not fetch the environmental data')
-        setEdata(null)  // ✅ Fixed incorrect `setSmoothies` reference
+        setEdata(null)  
       }
       if (data) {
         setEdata(data)
