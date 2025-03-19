@@ -20,7 +20,7 @@ const Create = () => {
 
     const { data, error } = await supabase
       .from('environmental_data')
-      .insert([{ dorm, rating, method }])
+      .insert([{ title, rating, method }])  // Changed dorm to title
 
     if (error) {
       console.log(error)
@@ -36,11 +36,11 @@ const Create = () => {
   return (
     <div className="page create">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="dorm">Dorm:</label>
+        <label htmlFor="title">Title:</label>  {/* Updated label */}
         <input 
           type="text" 
-          id="dorm"
-          value={dorm}
+          id="title"
+          value={title}  // Changed dorm to title
           onChange={(e) => setTitle(e.target.value)}
         />
 

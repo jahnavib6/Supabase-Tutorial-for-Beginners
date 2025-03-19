@@ -14,13 +14,13 @@ const Update = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!title || !method || !rating) {
+    if (!dorm || !method || !rating) {  // ✅ Changed 'title' to 'dorm'
       setFormError('Please fill in all the fields correctly.')
       return
     }
 
     const { data, error } = await supabase
-      .from('environment_data')
+      .from('environmental_data')  // ✅ Ensure the table name is consistent
       .update({ dorm, rating, method })
       .eq('id', id)
 
@@ -36,7 +36,7 @@ const Update = () => {
   useEffect(() => {
     const fetchEdata = async () => {
       const { data, error } = await supabase
-        .from('environmental_data')
+        .from('environmental_data')  // ✅ Ensure consistency in table name
         .select()
         .eq('id', id)
         .single()
@@ -62,7 +62,7 @@ const Update = () => {
           type="text" 
           id="dorm"
           value={dorm}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => setDorm(e.target.value)}  // ✅ Changed 'setTitle' to 'setDorm'
         />
 
         <label htmlFor="method">Method:</label>
