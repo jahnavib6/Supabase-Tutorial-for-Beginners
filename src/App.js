@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import Home from "./pages/Home"
 import Create from "./pages/Create"
 import Update from "./pages/Update"
-import Recs from ".pages/Recs"
-import CreateRecs from ".pages/CreateRecs"
+import Recs from './pages/Recs'
+import CreateRecs from './pages/CreateRecs'
 
 
 function App() {
