@@ -5,7 +5,7 @@ import supabase from "../config/supabaseClient"
 const Create = () => {
   const navigate = useNavigate()
 
-  const [title, setTitle] = useState('')
+  const [dorm, setDorm] = useState('')
   const [method, setMethod] = useState('')
   const [rating, setRating] = useState('')
   const [formError, setFormError] = useState(null)
@@ -13,14 +13,14 @@ const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!title || !method || !rating) {
+    if (!dorm || !method || !rating) {
       setFormError('Please fill in all the fields correctly.')
       return
     }
 
     const { data, error } = await supabase
       .from('environmental_data')
-      .insert([{ title, rating, method }])  
+      .insert([{ dorm, rating, method }])  // Insert directly with dorm value
 
     if (error) {
       console.log(error)
@@ -36,12 +36,12 @@ const Create = () => {
   return (
     <div className="page create">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title:</label>  {/* Updated label */}
+        <label htmlFor="dorm">Dorm:</label>
         <input 
           type="text" 
-          id="title"
-          value={title}  
-          onChange={(e) => setTitle(e.target.value)}
+          id="dorm"
+          value={dorm}
+          onChange={(e) => setDorm(e.target.value)}  
         />
 
         <label htmlFor="method">Method:</label>
@@ -59,7 +59,7 @@ const Create = () => {
           onChange={(e) => setRating(e.target.value)}
         />
 
-        <button>Create Environmental Task</button>
+        <button>Create Dorm Method Rating</button>
 
         {formError && <p className="error">{formError}</p>}
       </form>

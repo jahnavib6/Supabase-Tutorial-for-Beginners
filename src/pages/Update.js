@@ -23,6 +23,7 @@ const Update = () => {
       .from('environmental_data') 
       .update({ dorm, rating, method })
       .eq('id', id)
+      .single()
 
     if (error) {
       setFormError('Please fill in all the fields correctly.')
